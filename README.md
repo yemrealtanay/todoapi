@@ -1,66 +1,227 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Basic CRUD Todo API
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Powered by Laravel](https://img.shields.io/badge/Powered%20by-Laravel-red)](
+https://laravel.com/)
+[![Timed with Carbon](https://img.shields.io/badge/Timed%20with-Carbon-yellowgreen)](
+https://carbon.nesbot.com/docs/)
+[![Yunus Emre Altanay](https://img.shields.io/badge/Developed%20by-YEA-critical)](
+http://yemrealtanay.xyz)
 
-## About Laravel
+# Libraries and API's
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Laravel's JWT library for authentication operations;
+[Laravel/JWT](https://github.com/tymondesigns/jwt-auth)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- To make date operations and mathematical calculations between dates easy
+[Carbon](https://carbon.nesbot.com/docs/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- JWT Token Authentication system. You can use this API all platforms. 
+>Thanks for the jwt we can use beraer token for authantication. There is no cookies so we can use the api every platform we need. If you want to learn about Jwt [Click Here](https://jwt.io/); 
+- All Eloquent model CRUD operations from ITEM tag
+- Please feel free to contribute and improve...
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Project Setup
 
-## Laravel Sponsors
+- Clone the git repository: `git clone https://github.com/yemrealtanay/icebergEstateApi.git`
+- Modify the  `.env`  file configure your database settings.
+- Attach a fresh application key to the project with  `php artisan key:generate`
+-   Install project dependencies with  `composer install`  and update if necessary  `composer update`
+-   Generate the secret JWT key for initial auth token  `php artisan jwt:secret`
+-   Run the migrations and seed the database  `php artisan migrate --seed`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## About Seeder
+`Database Seeder` offers you a factory for 10 different users and 50 different Items.
 
-### Premium Partners
+## Other Links
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+> Postman Links: <<>>
 
-## Contributing
+> Heroku Deployment: <<>>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# API Documentation
 
-## Code of Conduct
+It performs API authentication over JWT tokens. Available functions and usage details are given below.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### User Registration Routes
 
-## Security Vulnerabilities
+> POST										.../api/auth/register
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```json 
+{
+    "message": "Agent successfully registered",
+    "user": {
+        "name": "Yunus Emre Altanay",
+        "email": "y.emrealtanay@gmail.com",
+        "updated_at": "Some Date",
+        "created_at": "Some Date",
+        "id": 10
+    }
+}
+```
 
-## License
+#### User Login Route
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> POST														.../api/auth/login
+
+```json  
+{
+    "access_token": "Some Long Berear Token",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+        "id": 6,
+        "name": "Yunus Emre Altanay",
+        "email": "y.emrealtanay@gmail.com",
+        "email_verified_at": "Some Date",
+        "created_at": "Some Date",
+        "updated_at": "Some Date"
+    }
+}
+```
+
+#### User Profile Route
+
+> GET															.../api/auth/user-profile
+
+```json 
+{
+   "id": 6,
+    "name": "Yunus Emre Altanay",
+    "email": "y.emrealtanay@gmail.com",
+    "email_verified_at": "Some Date",
+    "created_at": "Some Date",
+    "updated_at": "Some Date"
+}
+```
+
+#### User LogOut Route 
+
+> POST														.../api/auth/logout
+
+```json 
+{
+    "message": "User successfully signed out"
+}
+```
+
+#### Token Refresh
+
+> POST														.../api/auth/refresh
+
+
+``` json
+{
+    "access_token": "Some Long Berear Token",
+    "token_type": "bearer",
+    "expires_in": 3600,
+    "user": {
+        "id": 6,
+        "name": "Yunus Emre Altanay",
+        "email": "y.emrealtanay@gmail.com",
+        "email_verified_at": "Some Date",
+        "created_at": "Some Date",
+        "updated_at": "Some Date"
+    }
+}
+```
+
+### Items Routes
+
+```
+NOTE: Please do not forget use your authorization token while requesting.
+```
+
+#### List Items
+
+```
+NOTE: Items come with users. If you want to CRUD Items you need to login or take some fake user credentials from database.
+```
+
+> GET														.../api/items
+
+```json
+{
+   "11": {
+        "id": 12,
+        "user_id": 1,
+        "title": "Voluptas minima omnis temporibus et corrupti.",
+        "description": "Nihil veniam ea neque quo adipisci cupiditate. Blanditiis explicabo illo cumque quaerat excepturi. Officiis perferendis vero fugit velit aperiam voluptatem praesentium a. Fuga quia quo placeat minima voluptatem.",
+        "created_at": "16:45",
+        "updated_at": "16:45"
+    },
+    "17": {
+        "id": 18,
+        "user_id": 1,
+        "title": "Rerum aliquam temporibus hic.",
+        "description": "Ex quia numquam voluptatem odio distinctio. Molestiae vel eius qui. Praesentium nihil fugiat ea in aliquam cupiditate omnis.",
+        "created_at": "16:45",
+        "updated_at": "16:45"
+    },
+```
+
+#### Create Item
+
+> POST														.../api/items
+
+       | Key          | Type                        | Value                 |
+       | ------------ | --------------------------- | --------------------- |
+       | title        | string                      |   Item Title          |
+       | description  | string                      |	Item Description    |
+      
+
+
+```json
+{
+    "message": "Item created successfully",
+    "item": {
+        "title": "Ekmek Al",
+        "description": "en yakın fırından",
+        "user_id": 1,
+        "updated_at": "17:31",
+        "created_at": "17:31",
+        "id": 51
+    }
+}
+```
+#### Update Item
+
+> PUT								.../api/items/{ item_id }
+
+       | Key          | Type                        | Value                 |
+       | ------------ | --------------------------- | --------------------- |
+       | title        | string                      |   Item Title          |
+       | description  | string                      |	Item Description    |
+
+
+```json
+{
+    "message": "Item updated successfully",
+    "item": {
+        "id": 52,
+        "user_id": 1,
+        "title": "Yoğurt Al",
+        "description": "Ekmek alma boşver",
+        "created_at": "17:33",
+        "updated_at": "17:37"
+    }
+}
+```
+
+#### Delete Item
+
+> DELETE				.../api/items/{ item_id }
+
+```json
+{
+    "message": "Item deleted"
+}
+```
+
+
+
+
+
+
