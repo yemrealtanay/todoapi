@@ -37,9 +37,9 @@ http://yemrealtanay.xyz)
 
 ## Other Links
 
-> Postman Links: <<>>
+> Postman Links: https://galactic-equinox-206133.postman.co/workspace/b22da06b-7e96-4620-889f-c50e462fa6b3
 
-> Heroku Deployment: <<>>
+> Heroku Deployment: soon
 
 # API Documentation
 
