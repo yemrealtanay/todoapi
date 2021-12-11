@@ -28,11 +28,11 @@ class ItemController extends Controller
     public function store(Request $request): JsonResponse
     {
         try {
-            $item = Item::create([
-                'user_id' => auth()->user()->id,
-                'title' => $request->title,
-                'description' => $request->description,
-            ]);
+            $item = New Item();
+            $item->title = $request->title;
+            $item->description = $request->description;
+            $item->user_id = auth()->user()->id;
+            $item->save();
             return response()->json([
                 'message' => 'Item created successfully',
                 'item' => $item
@@ -63,9 +63,10 @@ class ItemController extends Controller
      * @return JsonResponse
      *
      */
-    public function update(Request $request, Item $item): JsonResponse
+    public function update(Request $request, $id): JsonResponse
     {
         try {
+            $item = Item::find($id);
             $item->update($request->all());
             return response()->json([
                 'message' => 'Item updated successfully',
@@ -90,7 +91,7 @@ class ItemController extends Controller
     {
         $item->delete();
         return response()->json(
-            ['message' => 'Appointment deleted'],
+            ['message' => 'Item deleted'],
         202);
     }
 }

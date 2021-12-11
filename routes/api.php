@@ -32,7 +32,7 @@ Route::group([
 ], function ($router) {
    Route::get('items', [ItemController::class, 'index']);
    Route::post('items', [ItemController::class, 'store']);
-   Route::post('items/{id}', [ItemController::class, 'update']);
+   Route::put('items/{id}', [ItemController::class, 'update']);
    Route::delete('items/{id}', [ItemController::class, 'destroy']);
    Route::get('items/{id}', [ItemController::class, 'show']);
 });
