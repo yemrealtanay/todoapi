@@ -32,6 +32,7 @@ class ItemController extends Controller
             $item->title = $request->title;
             $item->description = $request->description;
             $item->user_id = auth()->user()->id;
+            $item->column_id = $request->column_id;
             $item->save();
             return response()->json([
                 'message' => 'Item created successfully',

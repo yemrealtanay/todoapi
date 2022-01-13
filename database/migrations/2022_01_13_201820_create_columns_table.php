@@ -16,7 +16,7 @@ class CreateColumnsTable extends Migration
     {
         Schema::create('columns', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Item::class);
+            $table->foreignIdFor(Item::class)->nullable();
             $table->string('name');
             $table->timestamps();
         });
