@@ -1,12 +1,11 @@
 <?php
 
-use App\Models\Column;
-use App\Models\User;
+use App\Models\Item;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateColumnsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,12 +14,10 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('columns', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->foreignIdFor(Column::class);
-            $table->string('title');
-            $table->text('description')->nullable();
+            $table->foreignIdFor(Item::class);
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('columns');
     }
 }
