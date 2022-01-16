@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -22,8 +23,10 @@ class AuthController extends Controller
      * Get a JWT via given credentials.
      *
      * @return JsonResponse
+     *
      */
-    public function login(Request $request){
+    public function login(Request $request): JsonResponse
+    {
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|string|min:6',
